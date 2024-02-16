@@ -1,4 +1,4 @@
-"use client"
+
 import React, { Fragment, useState } from 'react'
 import Image from 'next/image';
 import { Combobox, Transition } from '@headlessui/react'
@@ -9,15 +9,15 @@ import { manufacturers } from "@/constants"
 export default function SearchManufacturer({ manufacturer, setManuFacturer }: SearchManufaturerProp) {
     const [query, setQuery] = useState("")
 
-    const filteredManufacturers = query === "" ? manufacturers
-        : manufacturers.filter(item => {
-            item.toLowerCase()
-                .replace(/\s+/g, "")
-                .includes(query.toLowerCase().replace(/\s+/g, ""))
-            //filter items with your search if that find
-        })
-
-
+    const filteredManufacturers =
+    manufacturer === ""
+            ? manufacturers
+            : manufacturers.filter((item) =>
+                item
+                    .toLowerCase()
+                    .replace(/\s+/g, "")
+                    .includes(manufacturer.toLowerCase().replace(/\s+/g, ""))
+            );
 
 
     return (
@@ -46,7 +46,7 @@ export default function SearchManufacturer({ manufacturer, setManuFacturer }: Se
                     />
                     {/* Transition for displaying the options */}
                     <Transition
-                        as={Fragment}
+                        as={Fragment}// group multiple elements without introducing an additional DOM node i.e., <></>
                         leave='Transition ease-in duration-100'
                         leaveFrom='opacity-100'
                         leaveTo='opacity-0'
@@ -57,21 +57,20 @@ export default function SearchManufacturer({ manufacturer, setManuFacturer }: Se
                             static
                         >
                             {/* اگر مقداری بعد از سرچ پیدا نشد این کار رو میکنه */}
-                            {filteredManufacturers.length === 0 && query !== "" ? (
+                            {filteredManufacturers.length === 0 && manufacturer !== "" ? (
                                 <Combobox.Option
-                                    value={query}
+                                    value={manufacturer}
                                     className={`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm`}
                                 >
-                                    Create " {query}"
+                                    Create " {manufacturer}"
                                 </Combobox.Option>
                             ) : (
                                 filteredManufacturers.map((item) => (
                                     <Combobox.Option
                                         key={item}
+                                        className={({ active }) => `relative search-manufacturer__option ${active ? "bg-primary-blue text-white" : "text-gray-900"}`
+                                        }
                                         value={item}
-                                        className={({ active }) => (
-                                            ` absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm ${active ? "bg-primary-blue text-white" : "text-gray-900"}`
-                                        )}
                                     >
                                         {({ selected, active }) => (
                                             <>
