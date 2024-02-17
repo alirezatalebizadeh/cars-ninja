@@ -37,7 +37,7 @@ export interface HomeProps {
   searchParams: FilterProps;
 }
 
-export interface carProps {
+export interface CarProps {
   city_mpg: number;
   class: string;
   combination_mpg: number;

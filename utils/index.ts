@@ -1,4 +1,4 @@
-import { FilterProps } from "@/types";
+import { FilterProps,CarProps } from "@/types";
 
 export const updateSearchParams = (type: string, value: string) => {
   // Get the current URL search params
@@ -23,7 +23,7 @@ export async function fetchCars(filters: FilterProps) {
   };
 
   const response = await fetch(
-    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla&make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla&make=${manufacturer}&year=${year}&model=${model}&limit=50&fuel_type=${fuel}`,
     {
       headers: headers,
     }
