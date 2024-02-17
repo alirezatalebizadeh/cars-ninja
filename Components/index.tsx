@@ -5,6 +5,7 @@ import CustomButton from "./CustomButton";
 import SearchBar from "./SearchBar";
 import CustomFilter from "./CustomFilter";
 import CarCard from "./CarCard";
+import carDetails from './CarDetails'
 
 export {
     Footer,
@@ -13,5 +14,7 @@ export {
     CustomButton,
     SearchBar,
     CustomFilter,
-    CarCard
+    CarCard,
+    carDetails
+
 }

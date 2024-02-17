@@ -1,9 +1,12 @@
 "use client"
 import React, { useState } from 'react';
-import { carProps } from "@/types";
-import { calculateCarRent, generateCarImageUrl } from '@/utils';
 import Image from 'next/image';
-import { CustomButton } from '.';
+
+import { calculateCarRent, generateCarImageUrl } from '@/utils';
+import { carProps } from "@/types";
+import CustomButton from './CustomButton';
+import CarDetails from './CarDetails';
+
 
 
 interface CarCardProps {
@@ -13,7 +16,8 @@ interface CarCardProps {
 export default function CarCard({ car }: CarCardProps) {
     const { city_mpg, year, make, model, transmission, drive } = car;
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState("hidden")
+
     const carRent = calculateCarRent(city_mpg, year)
 
 
@@ -33,7 +37,12 @@ export default function CarCard({ car }: CarCardProps) {
             </p>
 
             <div className='relative w-full h-40 my-3 object-contain'>
-                <Image src={generateCarImageUrl(car)} alt='car model' fill priority className='object-contain' />
+                <Image
+                    src={generateCarImageUrl(car)}
+                    alt='car model'
+                    fill
+                    priority
+                    className='object-contain' />
             </div>
 
             <div className='relative flex w-full mt-2'>
@@ -54,16 +63,24 @@ export default function CarCard({ car }: CarCardProps) {
                     </div>
                 </div>
 
-                <div className="car-card__btn-container">
+                <div className="hidden group-hover:flex absolute bottom-0 w-full z-10 ">
                     <CustomButton
                         title='View More'
                         containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
-                        textStyles='text-white text-[14px] leading-[17px] font-bold'
+                        textStyle='text-white text-[14px] leading-[17px] font-bold'
                         rightIcon='/right-arrow.svg'
-                        handleClick={() => setIsOpen(true)}
+                        handleClick={() => {
+                            setIsOpen("")
+                        }}
                     />
                 </div>
             </div>
+
+            <CarDetails
+                isOpen={isOpen}
+                closeModal={() => setIsOpen("hidden")}
+                car={car}
+            />
         </div>
     )
 }
