@@ -16,11 +16,38 @@ export interface OptionProps {
 }
 
 export interface CustomFilterProps {
-  pageNumber: number;
+  title: string;
   options: OptionProps[];
 }
 
 export interface SearchManufaturerProp {
   manufacturer: string;
   setManuFacturer: (manufacturer: string) => void;
+}
+
+export interface FilterProps {
+  manufacturer?: string;
+  year?: number;
+  model?: string;
+  limit?: number;
+  fuel?: string;
+}
+
+export interface HomeProps {
+  searchParams: FilterProps;
+}
+
+export interface carProps {
+  city_mpg: number;
+  class: string;
+  combination_mpg: number;
+  cylinders: number;
+  displacement: number;
+  drive: string;
+  fuel_type: string;
+  highway_mpg: number;
+  make: string;
+  model: string;
+  transmission: string;
+  year: number;
 }

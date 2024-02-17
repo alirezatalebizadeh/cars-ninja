@@ -57,7 +57,7 @@ export default function SearchBar() {
     }
 
     // !Generate the new pathname with the updated search parameters
-    const newPathName = `${window.location.pathname}? ${SearchParams.toString()}`
+    const newPathName = `${window.location.pathname}?${SearchParams.toString()}`
     console.log("model==>", model, "manufacturer =>", manufacturer, "router =>",
       router, "searhParam=>", SearchParams, "new path name", newPathName);
 
