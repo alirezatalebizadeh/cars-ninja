@@ -5,7 +5,7 @@ import { CarProps } from '@/types';
 import { generateCarImageUrl } from '@/utils'
 
 interface CarDetailsProps {
-    isOpen: "hidden" | "";
+    isOpen: string;
     closeModal: () => void;
     car: CarProps
 }

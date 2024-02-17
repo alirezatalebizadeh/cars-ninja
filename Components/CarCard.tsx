@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 import { calculateCarRent, generateCarImageUrl } from '@/utils';
-import { carProps } from "@/types";
+import { CarProps } from "@/types";
 import CustomButton from './CustomButton';
 import CarDetails from './CarDetails';
 
 
 
 interface CarCardProps {
-    car: carProps;
+    car: CarProps;
 }
 
 export default function CarCard({ car }: CarCardProps) {

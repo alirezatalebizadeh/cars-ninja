@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 
-const SearchButton = (otherClasses: string) => (
+const SearchButton = (otherClasses: any) => (
   <button
     type='submit'
     className={`-ml-3 z-10 ${otherClasses}`}>
