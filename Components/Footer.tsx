@@ -5,7 +5,7 @@ import { footerLinks } from '@/constants'
 
 export default function Footer() {
   return (
-    <footer className='flex  flex-col text-black-100 mt-5 border-t border-gray-100'>
+    <footer className='relative z-10 flex  flex-col text-black-100 mt-5 border-t border-gray-100'>
       <div className="flex flex-col md:flex-row flex-wrap justify-between gap-5 md:gap-[100px] lg:gap-[200px] px-10 sm:px-16 py-10">
         <div className="flex flex-col justify-start items-start gap-6">
           <Image src="/logo.svg" width={118} height={18} className='object-contain' alt='logo' />
